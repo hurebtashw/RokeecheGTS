@@ -6,7 +6,6 @@ from typing import List, Pattern, Optional
 BOT_COMMANDS_WIKI = "https://github.com/pytorch/pytorch/wiki/Bot-commands"
 
 CIFLOW_LABEL = re.compile(r"^ciflow/.+")
-CIFLOW_TRUNK_LABEL = re.compile(r"^ciflow/trunk")
 
 OFFICE_HOURS_LINK = "https://github.com/pytorch/pytorch/wiki/Dev-Infra-Office-Hours"
 CONTACT_US = f"Questions? Feedback? Please reach out to the [PyTorch DevX Team]({OFFICE_HOURS_LINK})"
@@ -18,8 +17,6 @@ ALTERNATIVES = (
 def has_label(labels: List[str], pattern: Pattern[str] = CIFLOW_LABEL) -> bool:
     return len(list(filter(pattern.match, labels))) > 0
 
-
-class TryMergeExplainer(object):
     force: bool
     labels: List[str]
     pr_num: int
@@ -38,7 +35,6 @@ class TryMergeExplainer(object):
         project: str,
     ):
         self.force = force
-        self.labels = labels
         self.pr_num = pr_num
         self.org = org
         self.project = project
